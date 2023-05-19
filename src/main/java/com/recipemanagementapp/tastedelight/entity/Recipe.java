@@ -9,6 +9,7 @@ import java.util.List;
 @javax.persistence.Table(name = "recipes")
 @Getter
 @Setter
+@lombok.ToString
 public class Recipe {
 
     @javax.persistence.Id
@@ -28,8 +29,6 @@ public class Recipe {
 
     private String instructions;
 
-    // Constructors
-
     public Recipe() {
     }
 
@@ -40,20 +39,6 @@ public class Recipe {
         this.ingredients = ingredients;
         this.instructions = instructions;
     }
-
-    // Override toString() to provide a meaningful representation of the object
-    @Override
-    public String toString() {
-        return "Recipe{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", vegetarian=" + vegetarian +
-                ", servings=" + servings +
-                ", ingredients=" + ingredients +
-                ", instructions='" + instructions + '\'' +
-                '}';
-    }
-
     public void setId(Long recipeId) {
     }
 }
