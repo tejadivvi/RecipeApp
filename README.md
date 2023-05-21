@@ -19,7 +19,7 @@ RESTful API
 MySQL
 Spring Data JPA
 JUnit
-Mockito
+Easymock
 ##Accessing the Endpoints
 The application provides several endpoints to perform various operations:
 
