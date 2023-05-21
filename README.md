@@ -33,7 +33,7 @@ json
   "instructions": "Preheat the oven to 400°F (200°C). Season the salmon with spices and marinate for 15 minutes. Bake in the preheated oven for 12-15 minutes or until the salmon is cooked through. Garnish with fresh mint leaves and serve hot.",
   "vegetarian": false,
   "servings": 4
-}`
+}` <br>
 2). Users can update a recipe by sending a PUT request to the /recipes/{recipeId} endpoint, where {recipeId} is the ID of the recipe to be updated. Url is `http://localhost:8080/recipes/{recipeId}'. Example of JSON body for updating a recipe:
 
 json
@@ -44,8 +44,8 @@ json
   "instructions": "Preheat the oven to 400°F (200°C). Season the salmon with spices and marinate for 15 minutes. Bake in the preheated oven for 12-15 minutes or until the salmon is cooked through. Garnish with fresh mint leaves and serve hot.",
   "vegetarian": false,
   "servings": 4
-} `
-3). Users can delete a recipe by sending a DELETE request to the /recipes/{recipeId} endpoint, where {recipeId} is the ID of the recipe to be deleted. Url is `http://localhost:8080/recipes/{recipeId}`.
+} ` <br>
+3). Users can delete a recipe by sending a DELETE request to the /recipes/{recipeId} endpoint, where {recipeId} is the ID of the recipe to be deleted. Url is `http://localhost:8080/recipes/{recipeId}`. <br>
 
 4). Users can filter recipes by the number of servings using the /recipes/servings/{count} endpoint. This endpoint returns recipes with the specified number of servings. Url is `http://localhost:8080/recipes/servings/{count}`.
 
