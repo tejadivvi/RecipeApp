@@ -1,5 +1,5 @@
-#Recipe Management application : TasteDelight 
-Create a standalone java application which allows users to manage their favourite recipes. It has a REST API for adding, updating, removing, and fetching recipes. Additionally, users can also filter available recipes based on different criteria as specified in the requirements (vegetarian status, number of servings, specific ingredients, and text search within the instructions).
+#Recipe Management application
+This is a standalone java application which allows users to manage their favourite recipes. It has a REST API for adding, updating, removing, and fetching recipes. Additionally, users can also filter available recipes based on different criteria as specified in the requirements (vegetarian status, number of servings, specific ingredients, and text search within the instructions).
 
 ##Architecutural Decisions
 
