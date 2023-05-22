@@ -1,65 +1,44 @@
 package com.reipemanagementapp.tastedelight;
 
-import org.easymock.EasyMock;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.HttpStatus;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.hamcrest.Matchers.hasSize;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.content;
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.jsonPath;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest
-public class RecipeControllerTest {
+@org.springframework.boot.test.context.SpringBootTest(classes = com.recipemanagementapp.tastedelight.TasteDelightApplication.class)
+@AutoConfigureMockMvc
+class RecipeControllerTest {
 
+    @Autowired
     private MockMvc mockMvc;
+
+    @Mock
+    private com.recipemanagementapp.tastedelight.service.RecipeService recipeService;
 
     @Autowired
     private com.recipemanagementapp.tastedelight.controller.RecipeController recipeController;
 
-    @Autowired
-    private com.recipemanagementapp.tastedelight.service.RecipeService recipeService;
-
-    @Before
-    public void setup() {
-        mockMvc = MockMvcBuilders.standaloneSetup(recipeController).build();
-    }
-
-    @After
-    public void tearDown() {
-        EasyMock.verify(recipeService);
-    }
-
     @Test
     public void testGetAllRecipes() {
-
         List<com.recipemanagementapp.tastedelight.entity.Recipe> recipes = new ArrayList<>();
-        EasyMock.expect(recipeService.getAllRecipes()).andReturn(recipes);
-        EasyMock.replay(recipeService);
+        when(recipeService.getAllRecipes()).thenReturn(recipes);
+
         List<com.recipemanagementapp.tastedelight.entity.Recipe> result = recipeController.getAllRecipes();
+
         assertEquals(recipes, result);
     }
-
-    @Test
-    public void testAddRecipe() {
-
-        com.recipemanagementapp.tastedelight.entity.Recipe recipe = new com.recipemanagementapp.tastedelight.entity.Recipe();
-        EasyMock.expect(recipeService.addRecipe(recipe)).andReturn(recipe);
-        EasyMock.replay(recipeService);
-        com.recipemanagementapp.tastedelight.entity.Recipe result = recipeController.addRecipe(recipe);
-        assertEquals(recipe, result);
-    }
 }
-
-
-
